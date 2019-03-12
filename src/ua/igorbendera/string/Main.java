@@ -101,7 +101,7 @@ public class Main {
         System.out.println("Введіть текст для підрахунку кількості речень");
         String text = scanner.nextLine();
 
-        String[] str = text.split("\\.");
+        String[] str = text.split("[.!?]");
         System.out.println("Текст - " + text + " \nскладається з " + str.length + " речень");
     }
 
