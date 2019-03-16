@@ -10,10 +10,6 @@ public class MyArrayList {
 
     }
 
-    public MyArrayList(int size) {
-        this.array = new int[size];
-    }
-
     public boolean add(int value) {
         increaseArray();
         array[array.length - 1] = value;

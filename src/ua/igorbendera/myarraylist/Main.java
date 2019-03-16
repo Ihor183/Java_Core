@@ -24,5 +24,7 @@ public class Main {
         myArrayList.remove(4);
 
         myArrayList.show();
+
+        MyArrayList myArrayList1 = new MyArrayList();
     }
 }
