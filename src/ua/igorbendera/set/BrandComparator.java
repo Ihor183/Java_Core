@@ -1,0 +1,28 @@
+package ua.igorbendera.set;
+
+import java.util.Comparator;
+
+public class BrandComparator implements Comparator<Car> {
+
+    @Override
+    public int compare(Car o1, Car o2) {
+        if(o1.getBrand().compareToIgnoreCase(o2.getBrand()) > 0) {
+            return 1;
+        } else if(o1.getBrand().compareToIgnoreCase(o2.getBrand()) < 0) {
+            return -1;
+        } else {
+            if(o1.getModel().compareToIgnoreCase(o2.getModel()) > 0) {
+                return 1;
+            } else if(o1.getModel().compareToIgnoreCase(o2.getModel()) < 0) {
+                return -1;
+            } else {
+                if(o1.getPower() < o2.getPower()) {
+                    return 1;
+                } else if(o1.getPower() > o2.getPower()) {
+                    return -1;
+                }
+            }
+        }
+        return 0;
+    }
+}
