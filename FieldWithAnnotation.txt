@@ -1,0 +1,2 @@
+kindOfAnimal - Dog
+age - 2
