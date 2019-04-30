@@ -14,7 +14,8 @@ public class Schedule implements Serializable {
         this.seances = seances;
     }
 
-    public boolean justMethod(Seance newSeance) {
+    public boolean checkIfSuchTimeIsFree(Seance newSeance) {
+
         Iterator<Seance> iterator = seances.iterator();
         while(iterator.hasNext()) {
             Seance seance = iterator.next();
@@ -34,7 +35,7 @@ public class Schedule implements Serializable {
     }
 
     public void addSeance(Seance seance) {
-        if(!seances.contains(seance) && (seances.size() == 0 || justMethod(seance))) {
+        if(!seances.contains(seance) && (seances.size() == 0 || checkIfSuchTimeIsFree(seance))) {
             seances.add(seance);
         } else {
             System.out.println("Something went wrong! That time is busy");

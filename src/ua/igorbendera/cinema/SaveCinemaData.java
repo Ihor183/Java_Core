@@ -2,7 +2,6 @@ package ua.igorbendera.cinema;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class SaveCinemaData {
 

@@ -1,6 +1,5 @@
 package ua.igorbendera.cinema;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
@@ -11,19 +10,12 @@ public class Main {
         int action;
         boolean flag = false;
 
-/*        System.out.println("Cinema is opened at");
-        Time openingTime = timeObjectFactory();
-
-        System.out.println("Cinema is closed at :");
-        Time closingTime = timeObjectFactory();
-
-        Cinema cinema = new Cinema(openingTime, closingTime);*/
-
         Cinema cinema = new Cinema(new Time(7,0), new Time(23, 0));
         System.out.println("Cinema is opened at " + cinema.getOpen() +
                 "\nclosed at " + cinema.getClose());
 
         deserializeData(cinema);
+        System.out.println("Дані з файлу отримано");
 
         while(!flag) {
 
@@ -53,6 +45,7 @@ public class Main {
                 }
                 case 12: {
                     Movie movie = movieObjectFactory();
+                    System.out.print("Start seance ");
                     Time startSeance = timeObjectFactory();
                     movie = cinema.getMovieFromList(movie);
 
@@ -66,35 +59,13 @@ public class Main {
                     break;
                 }
                 case 21: {
-
-                    break;
-                }
-                case 22: {
                     showSchedule(cinema.getSchedules());
                     break;
                 }
-                case 23: {
+                case 22: {
                     cinema.showFilmLibrary();
                     break;
                 }
-//                case 31: {
-//                    SaveCinemaData.writeScheduleToFile(cinema);
-////                    cinema.writeScheduleToFile();
-//                    break;
-//                }
-//                case 32: {
-//                    SaveCinemaData.filmLibraryToFile(cinema);
-//                    break;
-//                }
-//                case 41: {
-//                    SaveCinemaData.readScheduleFromFile(cinema);
-////                    cinema.readScheduleFromFile();
-//                    break;
-//                }
-//                case 42: {
-//                    SaveCinemaData.filmLibraryFromFile(cinema);
-//                    break;
-//                }
                 case 31: {
                     cinema.clearSchedules();
                     break;
@@ -148,32 +119,20 @@ public class Main {
                 "11 - Видалити фільм з бібліотеки(Видаляються всі сеанси пов'язані з фільмом)\n" +
                 "12 - Видалити сеанс\n\n" +
 
-                "21 - Розклад на конкретний день\n" +
-                "22 - Розклад на тиждень\n" +
-                "23 - Побачити бібліотеку фільмів\n\n" +
-
-//                "31 - Зберегти розклад на тиждень в файл\n" +
-//                "32 - Зберегти бібліотеку фільмів у файл\n\n" +
-//
-//                "41 - Витягнути з файлу розклад на тиждень\n" +
-//                "42 - Витягнути з файлу бібліотеку фільмів\n\n" +
+                "21 - Розклад на тиждень\n" +
+                "22 - Побачити бібліотеку фільмів\n\n" +
 
                 "31 - Очистити файл та дані розкладу\n" +
                 "32 - Очистити файл бібліотеки фільмів\n\n" +
 
-                "41 - Вихід\n" +
+                "41 - Вихід(Після виходу всі дані серіалізуються в файл)\n" +
                 "Select action: ");
 
-        int action = scanner.nextInt();
-        return action;
+        return scanner.hasNextInt()? scanner.nextInt() : 0;
     }
 
     private static void showSchedule(Map<Days, Schedule> map) {
-        for(Map.Entry<Days, Schedule> entry : map.entrySet()){
-            if(entry.getValue().getSeances().size() != 0) {
-                System.out.println(entry.getKey() + "\n" + entry.getValue() + "\n");
-            }
-        }
+        map.forEach((x, y) -> System.out.println(x + " " + y));
     }
 }
 

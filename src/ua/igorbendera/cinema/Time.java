@@ -29,13 +29,6 @@ public class Time implements Serializable {
             }
             i++;
         }
-//        System.out.print("Hour: ");
-//        int writtenHour = scanner.nextInt();
-//        setHour(writtenHour);
-//
-//        System.out.print("Minute: ");
-//        int writtenMinute =  scanner.nextInt();
-//        setMinute(writtenMinute);
     }
 
     public static Time calculateTime(Time t1, Time t2) {

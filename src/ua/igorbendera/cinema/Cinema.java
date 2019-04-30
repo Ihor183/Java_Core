@@ -109,61 +109,6 @@ public class Cinema implements Serializable {
         }
     }
 
-//    public void writeScheduleToFile() {
-//        for(Days day : Days.values()) {
-//            String fileName = day.toString() + ".txt";
-//            try {
-//
-//                FileOutputStream fos = new FileOutputStream(fileName);
-//                Schedule schedule = schedules.get(day);
-//                ObjectOutputStream oos = new ObjectOutputStream(fos);
-//
-//                Iterator<Seance> seanceIterator = schedule.getSeances().iterator();
-//
-//                while(seanceIterator.hasNext()) {
-//                    oos.writeObject(seanceIterator.next());
-//                }
-//
-//                oos.close();
-//                fos.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//    public void readScheduleFromFile() throws IOException, ClassNotFoundException {
-//        Schedule schedule;
-//        for(Days day : Days.values()) {
-//
-//            schedule = new Schedule();
-//            String fileName = day.toString() + ".txt";
-//            FileInputStream fis = new FileInputStream(fileName);
-//            ObjectInputStream ois = new ObjectInputStream(fis);
-//
-//            while(true) {
-//                try {
-//                    Seance seance = (Seance)ois.readObject();
-//                    schedule.addSeance(seance);
-//
-//                } catch (EOFException e) {
-//                    fis.close();
-//                    ois.close();
-//                    schedules.replace(day, schedule);
-//                    break;
-//                }
-//            }
-//        }
-//    }
-
-//    public void filmLibraryToFile() {
-//        FileOutputStream fis = new FileOutputStream("movie.txt");
-//    }
-//
-//    public void filmLibraryFromFile() {
-//
-//    }
-
     public void removeSeance(Seance seance, String day) {
         schedules.get(Days.valueOf(day.toUpperCase())).removeSeance(seance);
     }
@@ -210,5 +155,15 @@ public class Cinema implements Serializable {
 
     public void setClose(Time close) {
         this.close = close;
+    }
+
+    @Override
+    public String toString() {
+        return "Cinema{" +
+                "schedules=" + schedules +
+                ", moviesLibrary=" + moviesLibrary +
+                ", open=" + open +
+                ", close=" + close +
+                '}';
     }
 }
